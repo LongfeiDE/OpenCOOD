@@ -1,0 +1,16 @@
+- sensor_list:
+    - id: -41
+      name: 'radar'
+      args: &base_radar
+        horizontal_fov: 120
+        vertical_fov: 30
+        points_per_second: 20000
+        range: 300
+        thresh: 5 # mininum number of points hit to be regarded as visible
+        global_position: [-200, 78, 3, 0, 45, 0]
+- sensor_list:
+    - id: -42
+      name: 'radar'
+      args: 
+        <<: *base_radar
+        global_position: [-175, 102, 3, 0, -135, 0]
