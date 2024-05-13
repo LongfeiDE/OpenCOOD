@@ -319,11 +319,10 @@ class SceneManager:
             if not model:
                 print('model net found for %s' % bg_veh_id)
             veh_bp = blueprint_library.find(model)
+            # color = random.choice(
+            #     veh_bp.get_attribute('color').recommended_values)
 
-            color = random.choice(
-                veh_bp.get_attribute('color').recommended_values)
-
-        veh_bp.set_attribute('color', color)
+        # veh_bp.set_attribute('color', color)
 
         # spawn the vehicle
         vehicle = \
@@ -337,7 +336,7 @@ class SceneManager:
         self.veh_dict.update({str(bg_veh_id): {
             'cur_pose': cur_pose,
             'model': model,
-            'color': color,
+            # 'color': color,
             'actor_id': vehicle.id,
             'actor': vehicle,
             'cur_count': cur_timestamp

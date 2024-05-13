@@ -1,8 +1,10 @@
-root_dir: '/home/sensorbox/data/opv2v/train/' # your original opv2v dataset
-output_dir: '/home/sensorbox/data/opv2v/train/additional' # the new folder to save the dumped new data
+root_dir: '/home/sensorbox/data/infra_8/'  #opv2v/train/' # your original opv2v dataset
+output_dir: '/home/sensorbox/data/infra_8/additional' # opv2v/train/additional' # the new folder to save the dumped new data
+# root_dir: '/home/sensorbox/data/opv2v/train/' # your original opv2v dataset
+# output_dir: '/home/sensorbox/data/opv2v/train/additional' # the new folder to save the dumped new data
 map: # corresponding to bev map
   activate: true # whether activate HDMap module
-  visualize: false # whether to visualize the BEV Map for each CAV
+  visualize: true # whether to visualize the BEV Map for each CAV
 
   save_yml: false # whether to save the map meta data in yaml files
   save_static: false # whether to dump road segmentation mask
@@ -30,28 +32,6 @@ map: # corresponding to bev map
 
 sensor: # new attached sensor
   sensor_list:
-    - name: 'semantic_lidar'
-      args: &base_semantic_lidar
-        upper_fov: 10
-        lower_fov: -30
-        channels: 32
-        rotation_frequency: 20
-        points_per_second: 250000
-        range: 50
-        relative_pose: front
-        thresh: 5 # mininum number of points hit to be regarded as visible
-    - name: 'semantic_lidar'
-      args:
-        <<: *base_semantic_lidar
-        relative_pose: left
-    - name: 'semantic_lidar'
-      args:
-        <<: *base_semantic_lidar
-        relative_pose: right
-    - name: 'semantic_lidar'
-      args:
-        <<: *base_semantic_lidar
-        relative_pose: back
     - name: 'bev_semantic_camera'
       args:
         visualize: true

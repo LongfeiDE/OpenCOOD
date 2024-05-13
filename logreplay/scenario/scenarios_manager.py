@@ -2,8 +2,9 @@ import os
 from collections import OrderedDict
 
 from opencood.hypes_yaml.yaml_utils import load_yaml
-from logreplay.scenario.scene_manager import SceneManager
-
+# from logreplay.scenario.scene_manager import SceneManager
+from logreplay.scenario.scene_manager_fedbevt import SceneManager
+import time
 
 class ScenariosManager:
     """
@@ -63,6 +64,7 @@ class ScenariosManager:
             scene_manager.start_simulator()
 
             while run_flag:
+                time.sleep(0.1)
                 run_flag = scene_manager.tick()
 
             scene_manager.close()
@@ -70,7 +72,7 @@ class ScenariosManager:
 
 if __name__ == '__main__':
     from opencood.hypes_yaml.yaml_utils import load_yaml
-    scene_params = load_yaml('../hypes_yaml/replay.yaml')
+    scene_params = load_yaml('logreplay/hypes_yaml/replay.yaml')
     scenarios_manager = ScenariosManager(scenario_params=scene_params)
     scenarios_manager.tick()
     print('test passed')
